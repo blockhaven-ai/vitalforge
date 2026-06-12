@@ -1,0 +1,98 @@
+# Persona: healthy adult with a gradual multi-year fitness improvement arc.
+# Includes both a daily-signal baseline (for `vitalforge generate`) and a
+# 10-year trajectory (for `vitalforge trajectory`).
+schema_version: 1
+
+profile:
+  name: Jordan Kim
+  birth_date: "1992-08-03"
+  sex: female
+  height_cm: 165
+
+start_date: "2026-01-01"
+
+baseline:
+  heart_rate:
+    resting_mean: 62
+    resting_std: 3
+    active_mean: 132
+    active_std: 12
+    sleep_mean: 52
+    sleep_std: 3
+    samples_per_day: 72
+  blood_pressure:
+    systolic_start: 118
+    systolic_end: 117
+    diastolic_start: 76
+    diastolic_end: 75
+    std: 4
+    readings_per_day: 1
+  steps:
+    weekday_mean: 10500
+    weekday_std: 2200
+    weekend_mean: 13000
+    weekend_std: 3000
+  sleep:
+    bedtime_hour: 22.5
+    bedtime_std: 0.4
+    duration_mean_hours: 7.3
+    duration_std_hours: 0.4
+  weight:
+    start_kg: 64.0
+    end_kg: 63.8
+    std: 0.3
+    readings_per_week: 2
+  activity_energy:
+    weekday_mean_kcal: 460
+    weekday_std: 60
+    weekend_mean_kcal: 580
+    weekend_std: 90
+
+immunizations:
+  - text: Influenza vaccine, quadrivalent, 2025-2026 season
+    codes:
+      - { system: CVX, code: "197", display: "Influenza, quadrivalent, adjuvanted" }
+    date: "2025-10-20"
+
+encounters:
+  - kind: outpatient
+    modality: in_person
+    service: Primary care — annual physical examination
+    reason: Annual physical examination
+    providers:
+      - { role: attending, name: Dr. Priya Anand, specialty: Family Medicine }
+    location: Hillcrest Family Health
+    time: "2026-01-15T16:00:00Z"
+    summary: All vitals within normal range. No medications. Continue current activity level.
+
+trajectory:
+  blood_pressure:
+    phases:
+      - { year_start: 0, year_end: 5, systolic: [118, 116], diastolic: [76, 74] }
+      - { year_start: 5, year_end: 10, systolic: [116, 115], diastolic: [74, 74] }
+  metrics:
+    weight_kg:
+      - { year: 0, value: 64.0 }
+      - { year: 5, value: 63.0 }
+      - { year: 10, value: 63.5 }
+    resting_hr:
+      - { year: 0, mean: 62, std: 3 }
+      - { year: 5, mean: 57, std: 3 }
+      - { year: 10, mean: 55, std: 3 }
+    sleep_hours:
+      - { year: 0, mean: 7.3, std: 0.4 }
+      - { year: 10, mean: 7.5, std: 0.4 }
+    activity_kcal:
+      - { year: 0, mean: 460, std: 60 }
+      - { year: 10, mean: 540, std: 50 }
+  milestones:
+    - { year: 1, month: 5, event: Completed first marathon., kind: lifestyle }
+    - { year: 4, month: 9, event: Resting heart rate below 58 bpm for a full quarter., kind: fitness }
+    - { year: 8, month: 6, event: Began structured strength-training program., kind: lifestyle }
+  encounters:
+    - { year: 0, quarter: 1, kind: outpatient, service: Annual physical, provider: Dr. Priya Anand, specialty: Family Medicine, location: Hillcrest Family Health, outcome: All vitals within normal range }
+    - { year: 2, quarter: 1, kind: outpatient, service: Annual physical, provider: Dr. Priya Anand, specialty: Family Medicine, location: Hillcrest Family Health, outcome: Resting heart rate trending down with training }
+    - { year: 5, quarter: 1, kind: outpatient, service: Annual physical, provider: Dr. Priya Anand, specialty: Family Medicine, location: Hillcrest Family Health, outcome: Excellent cardiovascular fitness markers }
+    - { year: 8, quarter: 1, kind: outpatient, service: Annual physical, provider: Dr. Priya Anand, specialty: Family Medicine, location: Hillcrest Family Health, outcome: "Stable vitals, strength program noted" }
+    - { year: 10, quarter: 1, kind: lab, service: Ten-year comprehensive panel, provider: Dr. Priya Anand, specialty: Family Medicine, location: Hillcrest Family Health, outcome: All markers within normal range }
+  medications: []

@@ -1,0 +1,40 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "vitalforge"
+version = "0.1.0"
+description = "Persona-driven synthetic longitudinal health data generator"
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.10"
+authors = [{ name = "vitalforge contributors" }]
+keywords = ["synthetic-data", "health", "fhir", "fixtures", "time-series"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+    "Topic :: Software Development :: Testing",
+]
+dependencies = ["pyyaml>=6.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+vitalforge = "vitalforge.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/vitalforge/vitalforge"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/vitalforge"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
