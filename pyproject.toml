@@ -31,7 +31,7 @@ dev = ["pytest>=8.0"]
 vitalforge = "vitalforge.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/vitalforge/vitalforge"
+Homepage = "https://github.com/blockhaven-ai/vitalforge"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/vitalforge"]
